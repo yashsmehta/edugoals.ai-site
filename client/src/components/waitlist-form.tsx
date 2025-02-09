@@ -49,7 +49,7 @@ export function WaitlistForm() {
   });
 
   return (
-    <section id="waitlist" className="py-24 bg-white">
+    <section className="py-24 bg-black/95">
       <div className="container mx-auto px-4 max-w-md">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -57,8 +57,8 @@ export function WaitlistForm() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4">Join the Waitlist</h2>
-          <p className="text-gray-600">
+          <h2 className="text-4xl font-bold mb-4 text-white">Join the Waitlist</h2>
+          <p className="text-gray-400">
             Be among the first to experience the future of education
           </p>
         </motion.div>
@@ -79,9 +79,9 @@ export function WaitlistForm() {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Name</FormLabel>
+                    <FormLabel className="text-gray-200">Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="John Doe" {...field} />
+                      <Input placeholder="John Doe" {...field} className="bg-white/10 border-white/20 text-white" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -93,12 +93,13 @@ export function WaitlistForm() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel className="text-gray-200">Email</FormLabel>
                     <FormControl>
                       <Input
                         type="email"
                         placeholder="john@example.com"
                         {...field}
+                        className="bg-white/10 border-white/20 text-white"
                       />
                     </FormControl>
                     <FormMessage />
@@ -111,11 +112,12 @@ export function WaitlistForm() {
                 name="profession"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Profession</FormLabel>
+                    <FormLabel className="text-gray-200">Profession</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Teacher, Student, etc."
                         {...field}
+                        className="bg-white/10 border-white/20 text-white"
                       />
                     </FormControl>
                     <FormMessage />
@@ -125,7 +127,7 @@ export function WaitlistForm() {
 
               <Button
                 type="submit"
-                className="w-full"
+                className="w-full bg-gradient-to-r from-purple-500 via-pink-600 to-blue-600 hover:opacity-90"
                 disabled={mutation.isPending}
               >
                 {mutation.isPending ? "Joining..." : "Join Waitlist"}
