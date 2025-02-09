@@ -61,17 +61,13 @@ export function HeroSection() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 tracking-tighter">
-              <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 text-transparent bg-clip-text">
-                Smart AI agents
-              </span>
-              <span className="block text-white">helping you achieve your</span>
-              <span className="bg-gradient-to-r from-blue-400 via-teal-500 to-emerald-500 text-transparent bg-clip-text">
-                educational goals
+              EduGoals.ai: Revolutionizing Personal Learning Through
+              <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 text-transparent bg-clip-text block mt-2">
+                AI Orchestration
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Personalized learning paths, intelligent progress tracking, and
-              adaptive goal setting - all powered by cutting-edge AI technology.
+              Transform your educational journey with EduGoals.ai, where cutting-edge artificial intelligence creates a personalized learning ecosystem that evolves with you. Our revolutionary multi-agent AI system works in perfect harmony to deliver an unparalleled educational experience.
             </p>
             <motion.a
               href="#waitlist"
