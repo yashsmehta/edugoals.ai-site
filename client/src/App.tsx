@@ -1,13 +1,13 @@
-import { Router } from 'wouter';
+import { Router, Route } from 'wouter';
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 
-// Add base for GitHub Pages
+// Hardcode the base path
 const base = process.env.NODE_ENV === 'production' 
-  ? `/${process.env.GITHUB_REPOSITORY?.split('/')[1] || ''}`
+  ? '/edugoals.ai-site'
   : '';
 
 function App() {

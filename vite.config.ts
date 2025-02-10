@@ -13,7 +13,7 @@ const repo = process.env.GITHUB_REPOSITORY?.split('/')[1] || '';
 
 export default defineConfig({
   plugins: [react(), runtimeErrorOverlay(), themePlugin()],
-  base: process.env.NODE_ENV === 'production' ? `/${repo}/` : '/',
+  base: '/edugoals.ai-site/',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "client", "src"),
