@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
+import { Check } from "lucide-react";
 
 export function HeroSection() {
   const mouseX = useMotionValue(0);
@@ -60,15 +61,21 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 tracking-tighter">
-              EduGoals.ai: Revolutionizing Personal Learning Through
-              <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 text-transparent bg-clip-text block mt-2">
-                AI Orchestration
+            <h1 className="text-6xl md:text-7xl font-bold mb-6 tracking-tighter">
+              <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 text-transparent bg-clip-text">
+                EduGoals.ai
               </span>
+              <span className="text-white">: Smart AI Agents Engineering Your Education Success</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Transform your educational journey with EduGoals.ai, where cutting-edge artificial intelligence creates a personalized learning ecosystem that evolves with you. Our revolutionary multi-agent AI system works in perfect harmony to deliver an unparalleled educational experience.
+
+            <p className="text-2xl text-purple-300 mb-8 font-semibold">
+              Unlock the Future of Personalized Learning with AI
             </p>
+
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+              EduGoals.ai redefines education with a network of AI agents that adapt, learn, and evolve with you. More than just a learning tool, it pioneers a new era of personalized education, optimizing your growth with advanced AI synergy.
+            </p>
+
             <motion.a
               href="#waitlist"
               className="inline-block bg-gradient-to-r from-purple-500 via-pink-600 to-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity"
@@ -77,6 +84,61 @@ export function HeroSection() {
             >
               Join the Waitlist
             </motion.a>
+
+            <div className="mt-20 grid md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto">
+              <div className="space-y-6">
+                <h2 className="text-3xl font-bold text-white mb-6">Your Elite AI Learning Team</h2>
+
+                {[
+                  {
+                    title: "Adaptive Learning Companion",
+                    description: "Your personal strategist, dynamically adjusting your learning path based on progress, challenges, and goals for optimal performance."
+                  },
+                  {
+                    title: "Master AI Tutor",
+                    description: "An intelligent educator that adapts to your learning style, simplifying complex concepts through tailored explanations."
+                  },
+                  {
+                    title: "Intelligent Content Curator",
+                    description: "Your real-time knowledge hub, sourcing and synthesizing the most relevant, up-to-date educational materials."
+                  }
+                ].map((item, index) => (
+                  <div key={index} className="bg-white/5 p-6 rounded-lg backdrop-blur-sm">
+                    <h3 className="text-xl font-semibold text-purple-300 mb-2">{item.title}</h3>
+                    <p className="text-gray-300">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="space-y-6">
+                <h2 className="text-3xl font-bold text-white mb-6">AI-Driven Learning Excellence</h2>
+
+                <div className="bg-white/5 p-6 rounded-lg backdrop-blur-sm mb-6">
+                  <h3 className="text-xl font-semibold text-purple-300 mb-2">Advanced Assessment Architect</h3>
+                  <p className="text-gray-300">AI-driven evaluations that go beyond traditional testing, identifying gaps and providing precise, personalized feedback.</p>
+                </div>
+
+                <div className="bg-white/5 p-6 rounded-lg backdrop-blur-sm mb-6">
+                  <h3 className="text-xl font-semibold text-purple-300 mb-2">Strategic Orchestration Engine</h3>
+                  <p className="text-gray-300">The AI conductor that synchronizes all agents, ensuring seamless integration and an optimized learning experience.</p>
+                </div>
+
+                <div className="space-y-3">
+                  {[
+                    "Adapts to your style and pace in real-time",
+                    "Delivers precisely targeted content",
+                    "Provides meaningful, continuous feedback",
+                    "Leverages advanced data analysis for optimization",
+                    "Crafts a truly personalized learning journey"
+                  ].map((feature, index) => (
+                    <div key={index} className="flex items-center gap-2 text-gray-300">
+                      <Check className="h-5 w-5 text-purple-400" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
