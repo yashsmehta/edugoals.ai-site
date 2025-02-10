@@ -87,10 +87,10 @@ export function HeroSection() {
               Join the Waitlist
             </motion.a>
 
-            <div className="mt-20 grid md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto">
-              <div className="space-y-6">
-                <h2 className="text-3xl font-bold text-white mb-6">Your Smart AI Agents Team</h2>
+            <div className="mt-20 text-left max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-white mb-6">Your Smart AI Agents Team</h2>
 
+              <div className="grid md:grid-cols-2 gap-8">
                 {[
                   {
                     title: "Learning Agent",
