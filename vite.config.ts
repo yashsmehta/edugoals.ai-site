@@ -7,8 +7,13 @@ import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+// Get repository name for GitHub Pages
+const repo = process.env.GITHUB_REPOSITORY?.split('/')[1] || '';
+
 export default defineConfig({
   plugins: [react(), runtimeErrorOverlay(), themePlugin()],
+  base: process.env.NODE_ENV === 'production' ? `/${repo}/` : '/',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "client", "src"),
@@ -17,7 +22,7 @@ export default defineConfig({
   },
   root: path.resolve(__dirname, "client"),
   build: {
-    outDir: path.resolve(__dirname, "dist/public"),
+    outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
   },
 });
