@@ -87,20 +87,32 @@ export function HeroSection() {
 
             <div className="mt-20 grid md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto">
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold text-white mb-6">Your Elite AI Learning Team</h2>
+                <h2 className="text-3xl font-bold text-white mb-6">Your Smart AI Agents Team</h2>
 
                 {[
                   {
-                    title: "Adaptive Learning Companion",
-                    description: "Your personal strategist, dynamically adjusting your learning path based on progress, challenges, and goals for optimal performance."
+                    title: "Learning Agent",
+                    description: "Monitors user progress, identifies learning trends, and detects knowledge gaps."
                   },
                   {
-                    title: "Master AI Tutor",
-                    description: "An intelligent educator that adapts to your learning style, simplifying complex concepts through tailored explanations."
+                    title: "Tutoring Agent",
+                    description: "Provides personalized educational content and interactive learning experiences."
                   },
                   {
-                    title: "Intelligent Content Curator",
-                    description: "Your real-time knowledge hub, sourcing and synthesizing the most relevant, up-to-date educational materials."
+                    title: "Content Management Agent",
+                    description: "Organizes, updates, and categorizes medical learning resources."
+                  },
+                  {
+                    title: "Assessment Agent",
+                    description: "Assesses competency through quizzes, simulations, and peer evaluations."
+                  },
+                  {
+                    title: "Mentoring Agent",
+                    description: "Emulates expert clinicians to support decision-making and case analysis."
+                  },
+                  {
+                    title: "Coordination Agent",
+                    description: "Oversees communication between agents and optimizes workflow processes."
                   }
                 ].map((item, index) => (
                   <div key={index} className="bg-white/5 p-6 rounded-lg backdrop-blur-sm">
@@ -108,35 +120,6 @@ export function HeroSection() {
                     <p className="text-gray-300">{item.description}</p>
                   </div>
                 ))}
-              </div>
-
-              <div className="space-y-6">
-                <h2 className="text-3xl font-bold text-white mb-6">AI-Driven Learning Excellence</h2>
-
-                <div className="bg-white/5 p-6 rounded-lg backdrop-blur-sm mb-6">
-                  <h3 className="text-xl font-semibold text-purple-300 mb-2">Advanced Assessment Architect</h3>
-                  <p className="text-gray-300">AI-driven evaluations that go beyond traditional testing, identifying gaps and providing precise, personalized feedback.</p>
-                </div>
-
-                <div className="bg-white/5 p-6 rounded-lg backdrop-blur-sm mb-6">
-                  <h3 className="text-xl font-semibold text-purple-300 mb-2">Strategic Orchestration Engine</h3>
-                  <p className="text-gray-300">The AI conductor that synchronizes all agents, ensuring seamless integration and an optimized learning experience.</p>
-                </div>
-
-                <div className="space-y-3">
-                  {[
-                    "Adapts to your style and pace in real-time",
-                    "Delivers precisely targeted content",
-                    "Provides meaningful, continuous feedback",
-                    "Leverages advanced data analysis for optimization",
-                    "Crafts a truly personalized learning journey"
-                  ].map((feature, index) => (
-                    <div key={index} className="flex items-center gap-2 text-gray-300">
-                      <Check className="h-5 w-5 text-purple-400" />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
           </motion.div>
