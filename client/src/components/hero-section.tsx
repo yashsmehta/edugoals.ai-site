@@ -61,11 +61,13 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 tracking-tighter">
-              <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 text-transparent bg-clip-text">
+            <h1 className="font-bold tracking-tighter">
+              <span className="text-7xl md:text-8xl bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 text-transparent bg-clip-text">
                 EduGoals.ai
               </span>
-              <span className="text-white">: Smart AI Agents Engineering Your Education Success</span>
+              <span className="block text-5xl md:text-6xl text-white mt-4">
+                Smart AI Agents Engineering Your Education Success
+              </span>
             </h1>
 
             <p className="text-2xl text-purple-300 mb-8 font-semibold">
