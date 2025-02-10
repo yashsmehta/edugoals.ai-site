@@ -14,23 +14,33 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '20'
+          cache: 'npm'
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
         run: npm run build
-        env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - name: Clean index.html
+        run: |
+          sed -i 's/%$//' dist/index.html
+
+      - name: Create 404 page
+        run: cp dist/index.html dist/404.html
+
+      - name: Add .nojekyll file
+        run: touch dist/.nojekyll
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist 
+          publish_dir: ./dist
+          force_orphan: true 

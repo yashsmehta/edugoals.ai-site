@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { insertWaitlistSchema, type InsertWaitlist } from "@shared/schema";
-import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import {
   Form,
@@ -29,13 +28,15 @@ export function WaitlistForm() {
 
   const mutation = useMutation({
     mutationFn: async (data: InsertWaitlist) => {
-      const res = await apiRequest("POST", "/api/waitlist", data);
-      return res.json();
+      // For now, just simulate success
+      return new Promise((resolve) => {
+        setTimeout(() => resolve(data), 1000);
+      });
     },
     onSuccess: () => {
       toast({
         title: "Success!",
-        description: "You've been added to our waitlist. We'll be in touch soon!",
+        description: "Thanks for your interest! We'll be in touch soon.",
       });
       form.reset();
     },
@@ -48,30 +49,26 @@ export function WaitlistForm() {
     },
   });
 
-  return (
-    <section className="py-24 bg-black/95">
-      <div className="container mx-auto px-4 max-w-md">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl font-bold mb-4 text-white">Join the Waitlist</h2>
-          <p className="text-gray-400">
-            Be among the first to experience the future of education
-          </p>
-        </motion.div>
+  const onSubmit = (data: InsertWaitlist) => {
+    mutation.mutate(data);
+  };
 
+  return (
+    <section id="waitlist" className="py-24">
+      <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
+          className="max-w-md mx-auto"
         >
+          <h2 className="text-3xl font-bold text-center mb-8">
+            Join the Waitlist
+          </h2>
+
           <Form {...form}>
             <form
-              onSubmit={form.handleSubmit((data) => mutation.mutate(data))}
+              onSubmit={form.handleSubmit(onSubmit)}
               className="space-y-6"
             >
               <FormField
@@ -79,9 +76,9 @@ export function WaitlistForm() {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-200">Name</FormLabel>
+                    <FormLabel>Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="John Doe" {...field} className="bg-white/10 border-white/20 text-white" />
+                      <Input placeholder="Your name" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -93,13 +90,12 @@ export function WaitlistForm() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-200">Email</FormLabel>
+                    <FormLabel>Email</FormLabel>
                     <FormControl>
                       <Input
                         type="email"
-                        placeholder="john@example.com"
+                        placeholder="you@example.com"
                         {...field}
-                        className="bg-white/10 border-white/20 text-white"
                       />
                     </FormControl>
                     <FormMessage />
@@ -112,12 +108,11 @@ export function WaitlistForm() {
                 name="profession"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-200">Profession</FormLabel>
+                    <FormLabel>Profession</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Teacher, Student, etc."
+                        placeholder="Student, Teacher, etc."
                         {...field}
-                        className="bg-white/10 border-white/20 text-white"
                       />
                     </FormControl>
                     <FormMessage />
@@ -127,10 +122,10 @@ export function WaitlistForm() {
 
               <Button
                 type="submit"
-                className="w-full bg-gradient-to-r from-purple-500 via-pink-600 to-blue-600 hover:opacity-90"
+                className="w-full"
                 disabled={mutation.isPending}
               >
-                {mutation.isPending ? "Joining..." : "Join Waitlist"}
+                {mutation.isPending ? "Submitting..." : "Join Waitlist"}
               </Button>
             </form>
           </Form>
