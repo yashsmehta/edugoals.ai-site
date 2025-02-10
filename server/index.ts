@@ -2,6 +2,10 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
+if (process.env.NODE_ENV !== 'production') {
+  (await import('dotenv')).config();
+}
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -55,11 +59,16 @@ app.use((req, res, next) => {
   } else {
     serveStatic(app);
   }
+})();
 
-  // ALWAYS serve the app on port 5000
-  // this serves both the API and the client
+// Remove the server creation and listening code
+// Instead export the app for serverless use
+export default app;
+
+// Development-only server
+if (process.env.NODE_ENV === 'development') {
   const PORT = 5000;
-  server.listen(PORT, "0.0.0.0", () => {
+  app.listen(PORT, '0.0.0.0', () => {
     log(`serving on port ${PORT}`);
   });
-})();
+}
